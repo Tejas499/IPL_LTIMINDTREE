@@ -72,3 +72,14 @@ a.task-list {
   font-size: 16px;
   transition: color 0.3s ease;
 }
+.readonly-field {
+  background: #f0f0f0;
+  color: #555;
+  cursor: not-allowed;
+}
+
+.vote-note {
+  font-size: 12px;
+  color: #888;
+  margin: 8px 0;
+}

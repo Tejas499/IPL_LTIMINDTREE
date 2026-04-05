@@ -19,10 +19,21 @@ public class VoteServiceImpl implements VoteService {
         return voteRepository.findAll();
     }
 
-    @Override
-    public int createVote(Vote vote) {
-        return voteRepository.save(vote).getVoteId();
+   @Override
+public int createVote(Vote vote) {
+
+    // 🔴 Check if user already voted in this category
+    Vote existingVote = voteRepository
+            .findByEmailAndCategory(vote.getEmail(), vote.getCategory())
+            .orElse(null);
+
+    if (existingVote != null) {
+        throw new RuntimeException("You have already voted in this category");
     }
+
+    // ✅ Save if not voted yet
+    return voteRepository.save(vote).getVoteId();
+}
 
     @Override
     public Map<String, Long> getVotesCountOfAllCategories() {

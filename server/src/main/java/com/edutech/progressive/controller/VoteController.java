@@ -45,14 +45,15 @@ public class VoteController {
     }
  
     @PostMapping
- 
-    public ResponseEntity<Integer> createVote(@RequestBody Vote vote) {
- 
+public ResponseEntity<?> createVote(@RequestBody Vote vote) {
+    try {
         int id = voteService.createVote(vote);
- 
-        return ResponseEntity.status (201).body(id);
- 
+        return ResponseEntity.status(201).body(id);
+    } catch (RuntimeException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
+}
+
  
     @GetMapping("/count")
  

@@ -45,3 +45,14 @@
   }
   
   
+.readonly-field {
+  background: #f0f0f0;
+  color: #555;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 12px;
+  color: #888;
+  margin-left: 4px;
+}
